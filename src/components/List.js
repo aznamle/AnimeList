@@ -26,9 +26,9 @@ const List = ({ list }) => {
             {list.map((show) => (
                 <div>
                     <p>{show.mal_id}</p>
-                    <div onClick={()=>addWatch(show)}>
+                    <button onClick={()=>addWatch(show)}>
                         Add
-                    </div>
+                    </button>
                 </div>
             ))}
 

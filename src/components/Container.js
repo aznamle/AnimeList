@@ -6,7 +6,6 @@ import List from './List'
 const TopAnime = () => {
 
     const { data, isFetching } = useGetTopAnimeQuery()
-    const [ watch, setWatch ] = useState([])
     const top = data?.anime
 
     if(isFetching) return 'loading...'
