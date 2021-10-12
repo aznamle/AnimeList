@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { useGetTopAnimeQuery } from '../services/animeApi'
+import List from './List'
 
 const TopAnime = () => {
 
     const { data, isFetching } = useGetTopAnimeQuery()
-    const top = data?.data
+    const [ watch, setWatch ] = useState([])
+    const top = data?.anime
 
-    console.log(top)
-
+    if(isFetching) return 'loading...'
     return (
         <div>
-            test
+            <List list={top} />
         </div>
     )
 }
