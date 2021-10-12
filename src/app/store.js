@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { animeApi } from '../services/animeApi';
-import { listSlice } from './listSlice';
+import listReducer from './listSlice'
 
 export default configureStore({
     reducer: {
         [animeApi.reducerPath]: animeApi.reducer,
-        watchList: listSlice,
+        wList: listReducer,
     }
 })

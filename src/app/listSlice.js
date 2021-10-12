@@ -1,14 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const listSlice = createSlice({
+const listSlice = createSlice({
     name: "watchList",
     initialState: [],
     reducers: {
         add: (state, action) => {
-            state.push(action)
+            state.push(action.payload)
         }
     }
-
 })
 
 export const { add } = listSlice.actions

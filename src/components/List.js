@@ -1,39 +1,41 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+
 import { add } from '../app/listSlice'
 
 const List = ({ list }) => {
 
     const dispatch = useDispatch()
-    const wList = useSelector((state) => state.watchList)
+    const wList = useSelector((state) => state.wList)
 
-    // const watchLocalStorage = JSON.parse(localStorage.getItem('watch') || '[]')
-    const [ watch, setWatch ] = useState([])
+    const watchLocalStorage = JSON.parse(localStorage.getItem('watch') || '[]')
+    const [ watch, setWatch ] = useState(watchLocalStorage)
 
     const addWatch = (show) => {
-            const newWatchList = [...watch, show]
-            setWatch(newWatchList);
+        const newWatchList = [...watch, show]
+        setWatch(newWatchList);
     }
 
-    // useEffect(() => {
-    //     localStorage.setItem('watch', JSON.stringify(watch))
-    // }, [watch])
+    useEffect(() => {
+        localStorage.setItem('watch', JSON.stringify(watch))
+    }, [watch])
 
     console.log(wList)
-    console.log(watch)
 
     return (
         <div className='mx-auto flex'>
-            {watch.map((item) => (
+            {wList.map((item) => (
                 <div>
                     {item.title}
                 </div>
             ))}
 
+            
+
             {list.map((show) => (
                 <div>
                     <p>{show.mal_id}</p>
-                    <button onClick={()=>dispatch(add(addWatch(show)))}>
+                    <button onClick={()=>dispatch(add(show))}>
                         Add
                     </button>
                 </div>
