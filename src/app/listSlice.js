@@ -5,7 +5,7 @@ export const listSlice = createSlice({
     initialState: [],
     reducers: {
         add: (state, action) => {
-            state.initialState = [action.payload, ...state.initialState]
+            state.push(action)
         }
     }
 
