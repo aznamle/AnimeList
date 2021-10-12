@@ -8,16 +8,16 @@ const List = ({ list }) => {
     const dispatch = useDispatch()
     const wList = useSelector((state) => state.wList)
 
-    const watchLocalStorage = JSON.parse(localStorage.getItem('watch') || '[]')
+    const watchLocalStorage = JSON.parse(localStorage.getItem('wList') || '[]')
     const [ watch, setWatch ] = useState(watchLocalStorage)
 
-    const addWatch = (show) => {
-        const newWatchList = [...watch, show]
-        setWatch(newWatchList);
-    }
+    // const addWatch = (show) => {
+    //     const newWatchList = [...watch, show]
+    //     setWatch(newWatchList);
+    // }
 
     useEffect(() => {
-        localStorage.setItem('watch', JSON.stringify(watch))
+        localStorage.setItem('wList', JSON.stringify(wList))
     }, [watch])
 
     console.log(wList)

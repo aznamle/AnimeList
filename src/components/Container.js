@@ -9,6 +9,7 @@ const TopAnime = () => {
     const top = data?.anime
 
     if(isFetching) return 'loading...'
+    
     return (
         <div>
             <List list={top} />
