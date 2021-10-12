@@ -12,6 +12,12 @@ const List = ({ list }) => {
 
     return (
         <div className='mx-auto flex'>
+            {watch.map((item) => (
+                <div>
+                    {item.title}
+                </div>
+            ))}
+            
             {list.map((show) => (
                 <div>
                     <p>{show.mal_id}</p>
@@ -20,11 +26,7 @@ const List = ({ list }) => {
                     </div>
                 </div>
             ))}
-            {watch.map((item) => (
-                <div>
-                    {item.title}
-                </div>
-            ))}
+
         </div>
     )
 }
