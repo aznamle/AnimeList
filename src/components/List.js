@@ -5,27 +5,27 @@ import { add } from '../app/listSlice'
 
 const List = ({ list }) => {
 
-    const dispatch = useDispatch()
-    const wList = useSelector((state) => state.wList)
+    // RTK
+    // const dispatch = useDispatch()
+    // const wList = useSelector((state) => state.wList)
+    // END
 
-    const watchLocalStorage = JSON.parse(localStorage.getItem('wList') || '[]')
+    const watchLocalStorage = JSON.parse(localStorage.getItem('watch') || '[]')
     const [ watch, setWatch ] = useState(watchLocalStorage)
 
-    // const addWatch = (show) => {
-    //     const newWatchList = [...watch, show]
-    //     setWatch(newWatchList);
-    // }
+    const addWatch = (show) => {
+        const newWatchList = [...watch, show]
+        setWatch(newWatchList);
+    }
 
     useEffect(() => {
-        localStorage.setItem('wList', JSON.stringify(wList))
+        localStorage.setItem('watch', JSON.stringify(watch))
     }, [watch])
-
-    console.log(wList)
 
     return (
         <div className='mx-auto flex'>
 
-            {wList && wList.map((item) => (
+            {watch && watch.map((item) => (
                 <div>
                     {item.title}
                 </div>
@@ -36,7 +36,7 @@ const List = ({ list }) => {
             {list.map((show) => (
                 <div>
                     <p>{show.mal_id}</p>
-                    <button onClick={()=>dispatch(add(show))}>
+                    <button onClick={()=>addWatch(show)}>
                         Add
                     </button>
                 </div>
