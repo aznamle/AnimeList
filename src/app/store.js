@@ -1,7 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { animeApi } from '../services/animeApi';
 import listReducer from './listSlice'
-
 import {
     persistReducer,
     FLUSH,
@@ -16,15 +15,16 @@ import storage from 'redux-persist/lib/storage'
 
 const persistConfig = {
     key: 'root',
+    version: 1,
     storage,
+    blacklist: [animeApi.reducerPath],
   };
 
-const reducers = combineReducers({
-    [animeApi.reducerPath]: animeApi.reducer,
-    wList: listReducer,
-  });
+  // const reducers = combineReducers({
+  //     wList: listReducer,
+  // });
 
-  const persistedReducer = persistReducer(persistConfig, reducers);
+  const persistedReducer = persistReducer(persistConfig, listReducer);
 
 
 // export default configureStore({
@@ -36,7 +36,8 @@ const reducers = combineReducers({
 
 export default configureStore({
     reducer: {
-        reducers: persistedReducer
+      [animeApi.reducerPath]: animeApi.reducer,
+      reducer: persistedReducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
@@ -44,4 +45,4 @@ export default configureStore({
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
       }),
-  })
+})

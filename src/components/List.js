@@ -24,7 +24,8 @@ const List = ({ list }) => {
 
     return (
         <div className='mx-auto flex'>
-            {wList.map((item) => (
+
+            {wList && wList.map((item) => (
                 <div>
                     {item.title}
                 </div>
