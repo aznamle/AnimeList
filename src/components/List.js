@@ -14,8 +14,12 @@ const List = ({ list }) => {
     const [ watch, setWatch ] = useState(watchLocalStorage)
 
     const addWatch = (show) => {
+        if(watch.indexOf(show) < 1) {
         const newWatchList = [...watch, show]
         setWatch(newWatchList);
+        } else {
+            return undefined;
+        }
     }
 
     useEffect(() => {
