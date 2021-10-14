@@ -10,7 +10,7 @@ export const animeApi = createApi({
             query: () => `/season/2021/fall`
         }),
         getAnime: builder.query({
-            query: ({ mal_id }) => `/anime/${mal_id}`
+            query: (mal_id) => `/anime/${mal_id}`
         })
     })
 })

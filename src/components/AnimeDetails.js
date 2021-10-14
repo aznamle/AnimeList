@@ -6,14 +6,14 @@ const AnimeDetails = () => {
     const { mal_id } = useParams()
     const { data, isFetching } = useGetAnimeQuery(mal_id)
 
-    const AnimeDetails = data
+    const animeDetails = data
 
-    console.log(AnimeDetails)
     if(isFetching) return 'Loading...'
+    console.log(animeDetails)
 
     return (
         <div>
-            
+            {animeDetails.title}
         </div>
     )
 }

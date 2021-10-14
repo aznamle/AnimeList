@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-
-import { add } from '../app/listSlice'
 
 const List = ({ list }) => {
 
@@ -27,7 +24,7 @@ const List = ({ list }) => {
         <div className='mx-auto flex'>
 
             {watch && watch.map((item) => (
-                <div>
+                <div key={item.mal_id}>
                     {item.title}
                     <button onClick={()=>removeWatch(item)}>
                         Remove
@@ -38,8 +35,8 @@ const List = ({ list }) => {
             
 
             {list.map((show) => (
-                <div>
-                    <Link to={`anime/${show.mal_id}`}>
+                <div key={show.mal_id}>
+                    <Link to={`/anime/${show.mal_id}`}>
                         <p>{show.mal_id}</p>
                     </Link>
                         <button onClick={()=>addWatch(show)}>

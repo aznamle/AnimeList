@@ -11,7 +11,7 @@ const App = () => {
         <Route exact path="/">
           <Container />
         </Route>
-        <Route exact path="anime/:mal_id">
+        <Route exact path="/anime/:mal_id">
           <AnimeDetails />
         </Route>
       </Switch>
