@@ -20,7 +20,7 @@ const List = ({ list }) => {
 
     useEffect(() => {
         localStorage.setItem('watch', JSON.stringify(watch))
-        const filteredData = alist.filter((anime) => anime.title.toLowerCase().includes(search.toLowerCase()))
+        const filteredData = list.filter((anime) => anime.title.toLowerCase().includes(search.toLowerCase()))
         setAList(filteredData)
     }, [watch, list, search])
 
@@ -32,16 +32,19 @@ const List = ({ list }) => {
                     onChange={(e) => setSearch(e.target.value)} 
                 />
             </div>
+            <h1>Watch List:</h1>
             {watch && watch.map((item) => (
                 <div key={item.mal_id}>
                     {item.title}
                     <button onClick={()=>removeWatch(item)}>
                         Remove
                     </button>
+                    <br />
                 </div>
             ))}
+            --------------------------
 
-            {alist.map((show) => (
+            {list.map((show) => (
                 <div key={show.mal_id}>
                     <Link to={`/anime/${show.mal_id}`}>
                         <p>{show.mal_id}</p>
