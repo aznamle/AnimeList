@@ -13,7 +13,9 @@ const AnimeDetails = () => {
 
     return (
         <div>
-            {animeDetails.title}
+            <h1 className='text-3xl'>
+                {animeDetails.title}
+            </h1>
         </div>
     )
 }
