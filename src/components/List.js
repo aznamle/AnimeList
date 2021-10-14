@@ -14,12 +14,13 @@ const List = ({ list }) => {
     const [ watch, setWatch ] = useState(watchLocalStorage)
 
     const addWatch = (show) => {
-        if(watch.indexOf(show) < 1) {
         const newWatchList = [...watch, show]
         setWatch(newWatchList);
-        } else {
-            return undefined;
-        }
+    }
+
+    const removeWatch = (item) => {
+        const newWatchList = watch.filter((w) => w.mal_id !== item.mal_id)
+        setWatch(newWatchList)
     }
 
     useEffect(() => {
@@ -32,6 +33,9 @@ const List = ({ list }) => {
             {watch && watch.map((item) => (
                 <div>
                     {item.title}
+                    <button onClick={()=>removeWatch(item)}>
+                        Remove
+                    </button>
                 </div>
             ))}
 
