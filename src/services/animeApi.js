@@ -12,7 +12,15 @@ export const animeApi = createApi({
         getAnime: builder.query({
             query: (mal_id) => `/anime/${mal_id}`
         }),
+        getSeasonalAnime: builder.query({
+            query: ({ year, season }) => `/season/${year}/${season}`
+            
+        })
     })
 })
 
-export const { useGetTopAnimeQuery, useGetAnimeQuery } = animeApi;
+export const { 
+    useGetTopAnimeQuery, 
+    useGetAnimeQuery, 
+    useGetSeasonalAnimeQuery 
+} = animeApi;

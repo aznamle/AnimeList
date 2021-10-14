@@ -9,8 +9,12 @@ const List = ({ list }) => {
     const [ search, setSearch ] = useState('')
 
     const addWatch = (show) => {
-        const newWatchList = [...watch, show]
-        setWatch(newWatchList);
+        if(watch.includes(show)) {
+            return watch
+        } else {
+            const newWatchList = [...watch, show]
+            setWatch(newWatchList);
+        }
     }
 
     const removeWatch = (item) => {
@@ -51,12 +55,9 @@ const List = ({ list }) => {
                     <Link to={`/anime/${show.mal_id}`}>
                         <p>{show.mal_id}</p>
                     </Link>
-                    {watch.includes(show) ? null
-                        : 
-                        <button onClick={()=>addWatch(show)}>
+                    <button onClick={()=>addWatch(show)}>
                         Add
                     </button>
-                    }
                 </div>
             ))}
 
