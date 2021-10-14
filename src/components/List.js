@@ -44,7 +44,7 @@ const List = ({ list }) => {
             ))}
             --------------------------
 
-            {list.map((show) => (
+            {alist?.map((show) => (
                 <div key={show.mal_id}>
                     <Link to={`/anime/${show.mal_id}`}>
                         <p>{show.mal_id}</p>
