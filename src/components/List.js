@@ -32,7 +32,8 @@ const List = ({ list }) => {
                     onChange={(e) => setSearch(e.target.value)} 
                 />
             </div>
-            <h1>Watch List:</h1>
+
+            {/* watch.map can be its own component */}
             {watch && watch.map((item) => (
                 <div key={item.mal_id}>
                     {item.title}
@@ -42,16 +43,20 @@ const List = ({ list }) => {
                     <br />
                 </div>
             ))}
-            --------------------------
+
 
             {alist?.map((show) => (
-                <div key={show.mal_id}>
+                <div className='' key={show.mal_id}>
+                    <p>{show.title}</p>
                     <Link to={`/anime/${show.mal_id}`}>
                         <p>{show.mal_id}</p>
                     </Link>
+                    {watch.includes(show) ? null
+                        : 
                         <button onClick={()=>addWatch(show)}>
-                            Add
-                        </button>
+                        Add
+                    </button>
+                    }
                 </div>
             ))}
 
