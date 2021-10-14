@@ -7,9 +7,12 @@ export const animeApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'https://api.jikan.moe/v3' }),
     endpoints: (builder) => ({
         getTopAnime: builder.query({
-            query: () => `/season/2021/summer`
+            query: () => `/season/2021/fall`
+        }),
+        getAnime: builder.query({
+            query: ({ mal_id }) => `/anime/${mal_id}`
         })
     })
 })
 
-export const { useGetTopAnimeQuery } = animeApi;
+export const { useGetTopAnimeQuery, useGetAnimeQuery } = animeApi;

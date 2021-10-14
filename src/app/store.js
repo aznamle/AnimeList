@@ -14,25 +14,13 @@ import { combineReducers } from 'redux';
 import storage from 'redux-persist/lib/storage'
 
 const persistConfig = {
-    key: 'root',
-    version: 1,
-    storage,
-    blacklist: [animeApi.reducerPath],
-  };
+  key: 'root',
+  version: 1,
+  storage,
+  blacklist: [animeApi.reducerPath],
+};
 
-  // const reducers = combineReducers({
-  //     wList: listReducer,
-  // });
-
-  const persistedReducer = persistReducer(persistConfig, listReducer);
-
-
-// export default configureStore({
-//     reducer: {
-//         [animeApi.reducerPath]: animeApi.reducer,
-//         wList: listReducer,
-//     }
-// })
+const persistedReducer = persistReducer(persistConfig, listReducer);
 
 export default configureStore({
     reducer: {
