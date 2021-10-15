@@ -15,6 +15,9 @@ export const animeApi = createApi({
         getSeasonalAnime: builder.query({
             query: ({ year, season }) => `/season/${year}/${season}`
             
+        }),
+        getSearchAnime: builder.query({
+            query: (searchValue) => `/search/anime?q=${searchValue}`
         })
     })
 })
@@ -22,5 +25,6 @@ export const animeApi = createApi({
 export const { 
     useGetTopAnimeQuery, 
     useGetAnimeQuery, 
-    useGetSeasonalAnimeQuery 
+    useGetSeasonalAnimeQuery,
+    useGetSearchAnimeQuery
 } = animeApi;
