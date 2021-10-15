@@ -10,7 +10,7 @@ const TopAnime = () => {
 
     if(isFetching) return 'loading...'
     return (
-        <div className=''>
+        <div className='py-24'>
             <List list={top?.top} />
         </div>
     )
