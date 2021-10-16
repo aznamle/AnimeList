@@ -5,6 +5,7 @@ import Container from './components/Container'
 import AnimeDetails from './components/AnimeDetails';
 import Navbar from './components/Navbar';
 import Homepage from './components/Homepage';
+import Layout from './components/Layout';
 
 const App = () => {
   return (
@@ -12,15 +13,17 @@ const App = () => {
       <div>
         <Navbar />
       </div>
-      <div className='mx-auto max-w-7xl'>
-      <Switch>
-        <Route exact path="/">
-          <Homepage />
-        </Route>
-        <Route exact path="/anime/:mal_id">
-          <AnimeDetails />
-        </Route>
-      </Switch>
+      <div className=''>
+      <Layout>
+        <Switch>
+          <Route exact path="/">
+            <Homepage />
+          </Route>
+          <Route exact path="/anime/:mal_id">
+            <AnimeDetails />
+          </Route>
+        </Switch>
+      </Layout>
       </div>
     </div>
   )
