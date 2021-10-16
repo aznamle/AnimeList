@@ -17,7 +17,7 @@ export const animeApi = createApi({
             
         }),
         getSearchAnime: builder.query({
-            query: (searchValue) => `/search/anime?q=${searchValue}`
+            query: (searchValue) => `/search/anime?q=${searchValue}&limit=10`
         })
     })
 })

@@ -6,7 +6,7 @@ const Homepage = () => {
     
     
     return (
-        <div className='py-12'>
+        <div className='mx-auto max-w-5xl py-12'>
             <SearchAnime />
         </div>
     )
