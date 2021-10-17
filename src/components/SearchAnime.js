@@ -23,6 +23,11 @@ const SearchAnime = () => {
         
     }
 
+    const clearTag = () => {
+        setSearchValue('')
+        localStorage.removeItem('searchValue');
+    }
+
     useEffect(() => {
         localStorage.setItem('searchValue', JSON.stringify(searchValue))
     }, [searchValue])
@@ -46,9 +51,12 @@ const SearchAnime = () => {
             </div>
             { searchValue ? 
                 <div className='py-4'>
-                    <span className="bg-blue-400 text-white rounded-lg px-3 py-1 font-bold text-xs  cursor-pointer" >
-                    Search: {searchValue}
-                    </span>                
+                    <div className="bg-blue-400 inline-flex items-center text-sm rounded-md overflow-hidden">
+                    <span className="leading-relaxed truncate px-3 py-0 text-white font-bold">Search: {searchValue}</span>
+                        <button className="w-6 h-6 text-gray-500 bg-blue-300 focus:outline-none" onClick={clearTag}>
+                            <svg className="w-5 h-5 fill-current mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fillRule="evenodd" d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z"/></svg>
+                        </button>
+                    </div>
                 </div>
                 : undefined
             }

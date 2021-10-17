@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const AnimeCards = ({ animeQuery }) => {
     return (
-        <div className='grid grids:cols-2 md:grid-cols-5 gap-2'>
+        <div className='grid grids:cols-2 md:grid-cols-5 gap-2 justify-center'>
         {animeQuery && animeQuery?.map((show) => (
             <div key={show.mal_id} className='py-2 space-y-2 w-5/6'>
                 <Link to={`/anime/${show.mal_id}`}>
