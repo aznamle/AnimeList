@@ -11,7 +11,7 @@ const SearchAnime = () => {
     //new visits not showing top anime WIP
     const searchLocalStorage = JSON.parse(localStorage.getItem('searchValue'))
     const [ searchValue, setSearchValue ] = useState(searchLocalStorage)
-    const { data, isLoading } = useGetSearchAnimeQuery(searchValue)
+    const { data, isFetching, isLoading } = useGetSearchAnimeQuery(searchValue)
     const animeQuery = data?.results
     
     const handleSearch = (e) => {
@@ -52,7 +52,7 @@ const SearchAnime = () => {
             { searchValue ? 
                 <div className='py-4'>
                     <div className="bg-blue-400 inline-flex items-center text-sm rounded-md overflow-hidden">
-                    <span className="leading-relaxed truncate px-3 py-0 text-white font-bold">Search: {searchValue}</span>
+                    <span className="leading-relaxed truncate px-3 text-white font-bold">Search: {searchValue}</span>
                         <button className="w-6 h-6 text-gray-500 bg-blue-300 focus:outline-none" onClick={clearTag}>
                             <svg className="w-5 h-5 fill-current mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fillRule="evenodd" d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z"/></svg>
                         </button>
@@ -61,7 +61,7 @@ const SearchAnime = () => {
                 : undefined
             }
             <div className='py-2'>
-            { searchValue ?  <AnimeCards animeQuery={animeQuery} /> : <TopAnime /> }
+            { searchValue ? <AnimeCards isFetching={isFetching} animeQuery={animeQuery} /> : <TopAnime /> }
             </div>
         </div>
     )
