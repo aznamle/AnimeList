@@ -9,7 +9,7 @@ import Loader from './Loader'
 
 const SearchAnime = () => {
     const history = useHistory()
-    const searchLocalStorage = JSON.parse(localStorage.getItem('searchValue') || '')
+    const searchLocalStorage = JSON.parse(localStorage.getItem('searchValue'))
     const [ searchValue, setSearchValue ] = useState(searchLocalStorage)
     const { data, isLoading } = useGetSearchAnimeQuery(searchValue)
     const animeQuery = data?.results
