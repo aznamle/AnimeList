@@ -8,7 +8,7 @@ const TopAnime = () => {
     const { data, isFetching } = useGetTopAnimeQuery()
     const top = data
 
-    if(isFetching) return 'loading...'
+    if(isFetching) return 'Hahi (￣ﾛ￣ )'
     return (
         <div className='py-24'>
             <List list={top?.top} />

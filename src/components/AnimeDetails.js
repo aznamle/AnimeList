@@ -1,6 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router'
 import { useGetAnimeQuery } from '../services/animeApi'
+import Loader from './Loader'
 
 const AnimeDetails = () => {
     const { mal_id } = useParams()
@@ -8,9 +9,8 @@ const AnimeDetails = () => {
 
     const animeDetails = data
 
-    if(isFetching) return 'Loading...'
-    console.log(animeDetails)
-
+    if(isFetching) return <Loader />
+    
     return (
         <div>
             <h1 className='text-3xl'>
