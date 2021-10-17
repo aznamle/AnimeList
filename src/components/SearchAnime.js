@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useGetSearchAnimeQuery } from '../services/animeApi'
 import AnimeCards from './AnimeCards'
+import TopAnime from './TopAnime'
 
 const SearchAnime = () => {
-    const [ searchValue, setSearchValue ] = useState('aria')
+    const [ searchValue, setSearchValue ] = useState('')
     const { data, isLoading } = useGetSearchAnimeQuery(searchValue)
     const animeQuery = data?.results
     
@@ -31,8 +32,8 @@ const SearchAnime = () => {
                     </svg>
                 </div>
             </div>
-
-            <AnimeCards animeQuery={animeQuery} />
+            { searchValue === '' ? <TopAnime /> : <AnimeCards animeQuery={animeQuery} />
+            }
         </div>
     )
 }
