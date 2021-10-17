@@ -8,26 +8,25 @@ import Loader from './Loader'
 
 
 const SearchAnime = () => {
-    const history = useHistory();
-    const [ searchValue, setSearchValue ] = useState('')
+    const history = useHistory()
+    const searchLocalStorage = JSON.parse(localStorage.getItem('searchValue') || '')
+    const [ searchValue, setSearchValue ] = useState(searchLocalStorage)
     const { data, isLoading } = useGetSearchAnimeQuery(searchValue)
     const animeQuery = data?.results
     
     const handleSearch = (e) => {
+        localStorage.setItem('searchValue', JSON.stringify(searchValue))
         const timer = setTimeout(() => {
         setSearchValue(e.target.value)
         }, 1000)
         return () => clearTimeout(timer)
+        
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        setSearchValue(e.target.value)
-        history.push(`/search/anime=${searchValue}`)
-        setSearchValue()
-    }
+    useEffect(() => {
+        localStorage.setItem('searchValue', JSON.stringify(searchValue))
+    }, [searchValue])
 
-    
     return (
         <div className=''>
             <div className='py-4'>
