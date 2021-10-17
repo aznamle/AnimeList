@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import AnimeCards from './AnimeCards'
 import WatchList from './WatchList'
 
 const List = ({ list }) => {
@@ -30,8 +31,8 @@ const List = ({ list }) => {
     }, [watch, list, search])
 
     return (
-        <div className='max-w-5xl mx-auto flex'>
-            <div className=''>
+        <div className='max-w-5xl mx-auto'>
+            <div className='py-24'>
                  <input className="
                     w-full
                     px-4
@@ -60,7 +61,7 @@ const List = ({ list }) => {
             <WatchList watch={watch} removeWatch={removeWatch} />
         </div>
 
-        <div className='text-left w-1/2'>
+        {/* <div className='text-left w-1/2'>
             {alist?.map((show) => (
                 <div className='' key={show.mal_id}>
                     <img src={show.image_url} />
@@ -73,7 +74,9 @@ const List = ({ list }) => {
                     </button>
                 </div>
             ))}
-        </div>
+        </div> */}
+
+        <AnimeCards animeQuery={alist}/>
 
         </div>
     )
