@@ -8,7 +8,7 @@ import Loader from './Loader'
 
 
 const SearchAnime = () => {
-    //new visits not showing top anime
+    //new visits not showing top anime WIP
     const searchLocalStorage = JSON.parse(localStorage.getItem('searchValue'))
     const [ searchValue, setSearchValue ] = useState(searchLocalStorage)
     const { data, isLoading } = useGetSearchAnimeQuery(searchValue)
@@ -44,16 +44,16 @@ const SearchAnime = () => {
                     </svg>
                 </div>
             </div>
-            { searchValue !== '' ? 
+            { searchValue ? 
                 <div className='py-4'>
                     <span className="bg-blue-400 text-white rounded-lg px-3 py-1 font-bold text-xs  cursor-pointer" >
                     Search: {searchValue}
                     </span>                
                 </div>
-                : null
+                : undefined
             }
             <div className='py-2'>
-            { searchValue === '' ? <TopAnime /> : <AnimeCards animeQuery={animeQuery} /> }
+            { searchValue ?  <AnimeCards animeQuery={animeQuery} /> : <TopAnime /> }
             </div>
         </div>
     )
