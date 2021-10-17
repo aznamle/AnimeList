@@ -15,14 +15,14 @@ export const animeApi = createApi({
             
         }),
         getSearchAnime: builder.query({
-            query: (searchValue) => `/search/anime?q=${searchValue}&limit=10`
+            query: (searchValue) => `/search/anime?q=${searchValue}&page=1`
         })
     })
 })
 
 export const { 
-    useGetTopAnimeQuery, 
-    useGetAnimeQuery, 
+    useGetTopAnimeQuery,
+    useGetAnimeQuery,
     useGetSeasonalAnimeQuery,
     useGetSearchAnimeQuery
 } = animeApi;

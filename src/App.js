@@ -21,6 +21,9 @@ const App = () => {
           <Route exact path="/anime/:mal_id">
             <AnimeDetails />
           </Route>
+          <Route exact path="/anime/search?q=:anime">
+            {/* todo */}
+          </Route>
         </Switch>
       </Layout>
       </div>
