@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useGetTopAnimeQuery } from '../services/animeApi'
+import { useGetTopAnimeQuery } from '../app/services/animeApi'
 import List from './List'
 
 const TopAnime = () => {

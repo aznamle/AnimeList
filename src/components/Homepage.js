@@ -1,6 +1,5 @@
 import React from 'react'
 import SearchAnime from './SearchAnime'
-import Container from './Container'
 
 const Homepage = () => {
 

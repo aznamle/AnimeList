@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router'
-import { useGetAnimeQuery } from '../services/animeApi'
+import { useGetAnimeQuery } from '../app/services/animeApi'
 import Loader from './Loader'
 
 const AnimeDetails = () => {

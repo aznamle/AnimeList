@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { animeApi } from '../services/animeApi';
+import { animeApi } from '../app/services/animeApi';
 import listReducer from './listSlice'
 import {
     persistReducer,
@@ -10,7 +10,6 @@ import {
     PURGE,
     REGISTER,
 } from 'redux-persist'
-import { combineReducers } from 'redux';
 import storage from 'redux-persist/lib/storage'
 
 const persistConfig = {
@@ -32,5 +31,5 @@ export default configureStore({
         serializableCheck: {
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
-      }),
+      }).concat(animeApi.middleware),
 })

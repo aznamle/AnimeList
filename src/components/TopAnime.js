@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetTopAnimeQuery } from '../services/animeApi'
+import { useGetTopAnimeQuery } from '../app/services/animeApi'
 import AnimeCards from './AnimeCards'
 import Loader from './Loader'
 
