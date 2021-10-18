@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Filter = ({ handleSearch, setGenre }) => {
+const Filter = ({ searchValue, handleSearch, setGenre, clearTag }) => {
 
     const addGenre = (genre) => {
         const genreList = [...genre, genre]
@@ -14,8 +14,8 @@ const Filter = ({ handleSearch, setGenre }) => {
                     Search
                 </label>
                 <div className='relative'>
-                    <input className="p-2 pl-8 py-2 text-sm text-gray-500 transition duration-100 ease-in-out transform border-transparent rounded-lg focus:border-gray-300 focus:bg-white
-                        focus:outline-none focus:shadow-outline focus:ring-1 ring-offset-current ring-offset-2 shadow-sm"
+                    <input className="py-2 text-sm text-gray-500 transition duration-100 ease-in-out transform border-transparent rounded-lg focus:border-gray-300 focus:bg-white
+                        focus:outline-none focus:shadow-outline ring-offset-current ring-offset-2 shadow-sm"
                         placeholder=''
                         onChange={handleSearch}
                     />
@@ -26,8 +26,16 @@ const Filter = ({ handleSearch, setGenre }) => {
             </div>
             <div className=''>
                 <label className="block text-gray-600 text-md font-semibold py-2">
-                    Genre
+                    Genres
                 </label>
+                <span className="rounded-md shadow-sm">
+                    <button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-300 transition duration-200 ease-in-out
+                    bg-white rounded-md hover:text-gray-500 focus:outline-none active:bg-gray-50 active:text-gray-800" 
+                    aria-haspopup="true" aria-expanded="true" aria-controls="headlessui-menu-items-117">
+                    <span>Any</span>
+                    <svg className="w-5 h-5 ml-20 -mr-1" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                    </button>
+                </span>
             </div>
         </div>
     )

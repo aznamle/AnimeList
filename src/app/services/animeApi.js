@@ -7,6 +7,9 @@ export const animeApi = createApi({
         getTopAnime: builder.query({
             query: () => `/top/anime`
         }),
+        getTopAiring: builder.query({
+            query: () => '/top/anime/1/airing'
+        }),
         getAnime: builder.query({
             query: (mal_id) => `/anime/${mal_id}`
         }),
@@ -22,6 +25,7 @@ export const animeApi = createApi({
 
 export const { 
     useGetTopAnimeQuery,
+    useGetTopAiringQuery,
     useGetAnimeQuery,
     useGetSeasonalAnimeQuery,
     useGetSearchAnimeQuery

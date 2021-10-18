@@ -23,7 +23,7 @@ const Section = ( {children }) => {
         initial="hidden"
         variants={{
           hidden: {
-            y: 30,
+            y: 0,
             opacity: 0,
           },
           visible: {

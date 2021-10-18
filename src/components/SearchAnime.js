@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { useGetSearchAnimeQuery } from '../app/services/animeApi'
 import AnimeCards from './AnimeCards'
-import TopAnime from './TopAnime'
+import TopAnime from './Top/TopAnime'
 import Filter from './Filter'
+import TopAiring from './Top/TopAiring'
 
 const SearchAnime = () => {
     //new visits not showing top anime WIP
     const searchLocalStorage = JSON.parse(localStorage.getItem('searchValue'))
     const [ searchValue, setSearchValue ] = useState(searchLocalStorage)
     const [ genre, setGenre ] = useState('')
-    const { data, isFetching } = useGetSearchAnimeQuery(searchValue, genre)
+    const { data, isLoading, isFetching } = useGetSearchAnimeQuery(searchValue, genre)
     const animeQuery = data?.results
     
     const handleSearch = (e) => {
@@ -31,7 +32,7 @@ const SearchAnime = () => {
 
     return (
         <div className=''>
-            <Filter handleSearch={handleSearch} setGenre={setGenre} />
+            <Filter searchValue={searchValue} clearTag={clearTag} handleSearch={handleSearch} setGenre={setGenre} />
             { searchValue ? 
                 <div className='py-4'>
                     <div className="bg-blue-400 inline-flex items-center text-sm rounded-md overflow-hidden">
@@ -44,7 +45,12 @@ const SearchAnime = () => {
                 : undefined
             }
             <div className='py-2'>
-            { searchValue ? <AnimeCards isFetching={isFetching} animeQuery={animeQuery} /> : <TopAnime /> }
+            { searchValue ? <AnimeCards isLoading={isLoading} isFetching={isFetching} animeQuery={animeQuery} /> : 
+            <>
+                <TopAiring />
+                <TopAnime />
+            </>
+            }
             </div>
         </div>
     )
