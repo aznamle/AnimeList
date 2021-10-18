@@ -14,7 +14,7 @@ const Filter = ({ searchValue, handleSearch, setGenre, clearTag }) => {
                     Search
                 </label>
                 <div className='relative'>
-                    <input className="py-2 text-sm text-gray-500 transition duration-100 ease-in-out transform border-transparent rounded-lg focus:border-gray-300 focus:bg-white
+                    <input className="p-2 py-2 pl-8 text-sm text-gray-500 transition duration-100 ease-in-out transform border-transparent rounded-lg focus:border-gray-300 focus:bg-white
                         focus:outline-none focus:shadow-outline ring-offset-current ring-offset-2 shadow-sm"
                         placeholder=''
                         onChange={handleSearch}
