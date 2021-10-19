@@ -63,9 +63,11 @@ const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag, genreIdL
                         <p className='ml-2 text-gray-500 font-semibold py-2'>Genres</p>
                             <div className=" overflow-y-auto h-72">
                                 {genres.map((item) => (
-                                    <a className='text-gray-500 font-semibold flex cursor-pointer hover:bg-blue-500 px-4 py-1 hover:text-white transition transform duration-300' key={item.anime_id} onClick={() => {addGenre(item.anime_id); addGenreId(item.anime_genre);}}>
-                                        <span onClick={closeGenreMenu}>{item.anime_genre}</span>
-                                    </a>
+                                    <div onClick={closeGenreMenu}>
+                                        <a className='text-gray-500 font-semibold flex cursor-pointer hover:bg-blue-500 px-4 py-1 hover:text-white transition transform duration-300' key={item.anime_id} onClick={() => {addGenre(item.anime_id); addGenreId(item.anime_genre);}}>
+                                            <span>{item.anime_genre}</span>
+                                        </a>
+                                    </div>
                                 ))}
                             </div>
                         </div>
