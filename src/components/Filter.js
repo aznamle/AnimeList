@@ -10,7 +10,6 @@ const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag, genreIdL
         if(genre.includes(item)) {
             return genre
         } else {
-            localStorage.setItem('searchValue', JSON.stringify({searchValue}))
             const timer = setTimeout(() => {
                 const genreList = [...genre, item]
                 setGenre(genreList)
