@@ -22,9 +22,8 @@ const AnimeCards = ({ animeQuery, isFetching }) => {
                     <div className=''>
                         <img src={show.image_url} alt={show.title} className='object-cover h-72 w-full rounded-md shadow-lg' />
                     </div>
-                    <h1 className='font-semibold text-gray-500 hover:text-blue-500'>{show.title}</h1>
+                    <h1 className='font-semibold text-gray-500 transition transform duration-300 hover:text-blue-500'>{show.title}</h1>
                     </Link>
-
                 </div>
             </Section>
         ))}

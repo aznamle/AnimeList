@@ -40,9 +40,16 @@ const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag, genreIdL
             return genre
         } else {
             const genreList = [...genre, item]
-            const genreIdList = genre.concat(item.anime_id + ',')
             setGenre(genreList)
-            setGenreIdList(genreIdList)
+        }
+    }
+
+    const addGenreId = (item) => {
+        if(genreIdList.includes(item)) {
+            return genreIdList
+        } else {
+            const idList = [...genreIdList, item]
+            setGenreIdList(idList)
         }
     }
 
@@ -67,21 +74,21 @@ const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag, genreIdL
                 <label className="block text-gray-600 text-md font-semibold py-2">
                     Genres
                 </label>
-                <span className="rounded-md shadow-sm">
+                <span className="rounded-md shadow-md">
                     <button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-300 transition duration-300 ease-in-out
                     bg-white rounded-md hover:text-gray-500 focus:outline-none active:bg-gray-50 active:text-gray-800" 
                         aria-haspopup="true" aria-expanded="true" aria-controls="headlessui-menu-items-117"
                         onClick={() => toggleExpansion(!isExpanded)}
                     >
                         <span>Any</span>
-                        <svg className="w-5 h-5 ml-20 -mr-1" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                        <svg className="w-5 h-5 ml-28 -mr-1" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                     </button>
-                    <div className="opacity-100 dropdown-menu transition-all duration-300 transform origin-top-right scale-95 z-40">
-                        <div className={`${isExpanded ? `block` : `hidden`} absolute right-0 w-40 mt-2 bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none`} aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
+                    <div className={`${isExpanded ? `block` : `hidden`} opacity-100 dropdown-menu transition-all duration-300 transform origin-top-right scale-95`}>
+                        <div className='absolute right-0 w-48 mt-2 bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none' aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                         <p className='ml-2 text-gray-500 font-semibold py-2'>Genres</p>
-                            <div className="px-4 py-3 space-y-2 overflow-y-auto h-72">
+                            <div className=" overflow-y-auto h-72">
                                 {genres.map((item) => (
-                                    <a className='text-gray-500 font-semibold flex' key={item.anime_id} onClick={() => addGenre(item.anime_id)}>
+                                    <a className='text-gray-500 font-semibold flex cursor-pointer hover:bg-blue-500 px-4 py-1 hover:text-white transition transform duration-300' key={item.anime_id} onClick={() => {addGenre(item.anime_id); addGenreId(item.anime_genre)}}>
                                         <span>{item.anime_genre}</span>
                                     </a>
                                 ))}

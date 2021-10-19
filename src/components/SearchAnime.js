@@ -31,32 +31,37 @@ const SearchAnime = () => {
         localStorage.removeItem('searchValue');
     }
     
-    //need to concat or somehow set genre value for genre=1,2,3 etc
-    const clearGenreTag = (genre_id) => {
-        const removeGenre = genre?.filter((g) => g.anime_id !== genre_id.anime_id)
+    const clearGenreTag = (g) => {
+        const removeGenre = genreIdList.filter((item) => item.anime_id !== g.anime_id)
         setGenre('')
+        setGenreIdList('')
     }
 
     useEffect(() => {
         localStorage.setItem('searchValue', JSON.stringify(searchValue))
-    }, [searchValue, genre])
+    }, [searchValue])
+
+    console.log(searchValue)
+    console.log(genre)
 
     return (
         <div className=''>
             <Filter searchValue={searchValue} clearSearchTag={clearSearchTag} handleSearch={handleSearch} setGenre={setGenre} genre={genre} genreIdList={genreIdList} setGenreIdList={setGenreIdList} />
-            { searchValue || genre ?  
+            { searchValue || genreIdList ?  
                 <Section>
                 <div className='py-4 flex space-x-4 items-center'>
                     <FaTags fontSize='20px' className='text-gray-300' />
+                    { searchValue && (
                     <div className="bg-blue-400 inline-flex items-center text-sm rounded-md overflow-hidden">
                     <span className="leading-relaxed truncate px-3 text-white font-semibold">Search: {searchValue}</span>
                         <button className="w-6 h-6 text-gray-500 bg-blue-300 focus:outline-none" onClick={clearSearchTag}>
                             <svg className="w-5 h-5 fill-current mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fillRule="evenodd" d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z"/></svg>
                         </button>
                     </div>
-                    { genre && genre?.map((g) => (
+                    )}
+                    { genreIdList && genreIdList?.map((g) => (
                     <div className="bg-blue-400 inline-flex items-center text-sm rounded-md overflow-hidden">
-                    <span className="leading-relaxed truncate px-3 text-white font-semibold">{g.anime_genre}</span>
+                    <span className="leading-relaxed truncate px-3 text-white font-semibold">{g}</span>
                         <button className="w-6 h-6 text-gray-500 bg-blue-300 focus:outline-none" onClick={() => clearGenreTag(g)}>
                             <svg className="w-5 h-5 fill-current mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fillRule="evenodd" d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z"/></svg>
                         </button>
@@ -64,10 +69,10 @@ const SearchAnime = () => {
                     ))}
                 </div>
                 </Section>
-                : undefined
+                : null
             }
             <div className='py-2'>
-            { searchValue!=='' || genre !=='' ? <AnimeCards isLoading={isLoading} isFetching={isFetching} animeQuery={animeQuery} /> : 
+            { searchValue || genre !=='' || genreIdList !=='' ? <AnimeCards isLoading={isLoading} isFetching={isFetching} animeQuery={animeQuery} /> : 
             <>
                 <TopAiring />
                 <TopAnime />
