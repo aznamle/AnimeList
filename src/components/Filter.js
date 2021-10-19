@@ -1,39 +1,10 @@
-import React, {useState, useEffect } from 'react'
+import React, {useState } from 'react'
+import { genres } from '../data/genres'
 
 const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag, genreIdList, setGenreIdList }) => {
 
-    const genres = [
-        { anime_genre: 'Action', anime_id: '1'},
-        { anime_genre: 'Adventure', anime_id: '2'},
-        { anime_genre: 'Cars', anime_id: '3'},
-        { anime_genre: 'Comedy', anime_id: '4'},
-        { anime_genre: 'Avante Garde', anime_id: '5'},
-        { anime_genre: 'Demon', anime_id: '6'},
-        { anime_genre: 'Ecchi', anime_id: '9'},
-        { anime_genre: 'Fantasy', anime_id: '10'},
-        { anime_genre: 'Game', anime_id: '11'},
-        { anime_genre: 'Hentai', anime_id: '12'},
-        { anime_genre: 'Historical', anime_id: '13'},
-        { anime_genre: 'Horror', anime_id: '14'},
-        { anime_genre: 'Kids', anime_id: '15'},
-        { anime_genre: 'Martial Arts', anime_id: '17'},
-        { anime_genre: 'Mecha', anime_id: '18'},
-        { anime_genre: 'Music', anime_id: '19'},
-        { anime_genre: 'Parody', anime_id: '20'},
-        { anime_genre: 'Samurai', anime_id: '21'},
-        { anime_genre: 'Romance', anime_id: '22'},
-        { anime_genre: 'School', anime_id: '23'},
-        { anime_genre: 'Sci Fi', anime_id: '24'},
-        { anime_genre: 'Shoujo', anime_id: '25'},
-        { anime_genre: 'Girls Love', anime_id: '26'},
-        { anime_genre: 'Shounen', anime_id: '27'},
-        { anime_genre: 'Boys Love', anime_id: '28'},
-        { anime_genre: 'Space', anime_id: '29'},
-        { anime_genre: 'Sports', anime_id: '30'},
-    ]
-
     const [ isExpanded, toggleExpansion ] = useState(false)
-    const closeGenreMenu = !toggleExpansion
+    const closeGenreMenu = () => toggleExpansion(false)
 
     const addGenre = (item) => {
         if(genre.includes(item)) {
@@ -93,7 +64,7 @@ const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag, genreIdL
                             <div className=" overflow-y-auto h-72">
                                 {genres.map((item) => (
                                     <a className='text-gray-500 font-semibold flex cursor-pointer hover:bg-blue-500 px-4 py-1 hover:text-white transition transform duration-300' key={item.anime_id} onClick={() => {addGenre(item.anime_id); addGenreId(item.anime_genre);}}>
-                                        <span>{item.anime_genre}</span>
+                                        <span onClick={closeGenreMenu}>{item.anime_genre}</span>
                                     </a>
                                 ))}
                             </div>

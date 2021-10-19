@@ -50,7 +50,7 @@ const SearchAnime = () => {
                     <FaTags fontSize='20px' className='text-gray-300' />
                     { searchValue && (
                     <div className="bg-blue-400 inline-flex items-center text-sm rounded-md overflow-hidden">
-                    <span className="leading-relaxed truncate px-3 text-white font-semibold">Search: {searchValue}</span>
+                    <span className="leading-relaxed truncate px-3 text-white font-semibold capitalize">Search: {searchValue}</span>
                         <button className="w-6 h-6 text-gray-500 bg-blue-300 focus:outline-none" onClick={clearSearchTag}>
                             <svg className="w-5 h-5 fill-current mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fillRule="evenodd" d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z"/></svg>
                         </button>
