@@ -39,8 +39,12 @@ const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag, genreIdL
         if(genre.includes(item)) {
             return genre
         } else {
-            const genreList = [...genre, item]
-            setGenre(genreList)
+            localStorage.setItem('searchValue', JSON.stringify({searchValue}))
+            const timer = setTimeout(() => {
+                const genreList = [...genre, item]
+                setGenre(genreList)
+            }, 1000)
+            return () => clearTimeout(timer)
         }
     }
 
@@ -88,7 +92,7 @@ const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag, genreIdL
                         <p className='ml-2 text-gray-500 font-semibold py-2'>Genres</p>
                             <div className=" overflow-y-auto h-72">
                                 {genres.map((item) => (
-                                    <a className='text-gray-500 font-semibold flex cursor-pointer hover:bg-blue-500 px-4 py-1 hover:text-white transition transform duration-300' key={item.anime_id} onClick={() => {addGenre(item.anime_id); addGenreId(item.anime_genre)}}>
+                                    <a className='text-gray-500 font-semibold flex cursor-pointer hover:bg-blue-500 px-4 py-1 hover:text-white transition transform duration-300' key={item.anime_id} onClick={() => {addGenre(item.anime_id); addGenreId(item.anime_genre);}}>
                                         <span>{item.anime_genre}</span>
                                     </a>
                                 ))}

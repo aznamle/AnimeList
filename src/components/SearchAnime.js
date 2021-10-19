@@ -22,7 +22,7 @@ const SearchAnime = () => {
         localStorage.setItem('searchValue', JSON.stringify({searchValue}))
         const timer = setTimeout(() => {
         setSearchValue(e.target.value)
-        }, 1500)
+        }, 1250)
         return () => clearTimeout(timer)
     }
 
