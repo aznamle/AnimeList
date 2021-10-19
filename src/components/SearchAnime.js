@@ -22,7 +22,7 @@ const SearchAnime = () => {
         localStorage.setItem('searchValue', JSON.stringify({searchValue}))
         const timer = setTimeout(() => {
         setSearchValue(e.target.value)
-        }, 1000)
+        }, 1500)
         return () => clearTimeout(timer)
     }
 
@@ -44,7 +44,7 @@ const SearchAnime = () => {
     return (
         <div className=''>
             <Filter searchValue={searchValue} clearSearchTag={clearSearchTag} handleSearch={handleSearch} setGenre={setGenre} genre={genre} genreIdList={genreIdList} setGenreIdList={setGenreIdList} />
-            { searchValue ?  
+            { searchValue || genre ?  
                 <Section>
                 <div className='py-4 flex space-x-4 items-center'>
                     <FaTags fontSize='20px' className='text-gray-300' />
@@ -67,7 +67,7 @@ const SearchAnime = () => {
                 : undefined
             }
             <div className='py-2'>
-            { searchValue || genre ? <AnimeCards isLoading={isLoading} isFetching={isFetching} animeQuery={animeQuery} /> : 
+            { searchValue!=='' || genre !=='' ? <AnimeCards isLoading={isLoading} isFetching={isFetching} animeQuery={animeQuery} /> : 
             <>
                 <TopAiring />
                 <TopAnime />

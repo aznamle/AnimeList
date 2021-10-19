@@ -46,8 +46,6 @@ const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag, genreIdL
         }
     }
 
-    console.log(genre)
-    console.log(genreIdList)
     return (
         <div className='py-4 mx-auto flex space-x-8'>
             <div className=''>
