@@ -18,7 +18,7 @@ export const animeApi = createApi({
             
         }),
         getSearchAnime: builder.query({
-            query: (searchValue, genre) => `/search/anime?q=${searchValue}&page=1&genre=12&genre_exclude=1&genre=${genre}&genre_exclude=0`
+            query: ({searchValue, genre}) => `/search/anime?q=${searchValue}&page=1&genre=${genre}`
         })
     })
 })

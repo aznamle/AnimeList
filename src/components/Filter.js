@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react'
 
-const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag }) => {
+const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag, genreIdList, setGenreIdList }) => {
 
     const genres = [
         { anime_genre: 'Action', anime_id: '1'},
@@ -33,17 +33,21 @@ const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag }) => {
     ]
 
     const [ isExpanded, toggleExpansion ] = useState(false)
+    const closeGenreMenu = !toggleExpansion
 
     const addGenre = (item) => {
         if(genre.includes(item)) {
             return genre
         } else {
             const genreList = [...genre, item]
+            const genreIdList = genre.concat(item.anime_id + ',')
             setGenre(genreList)
+            setGenreIdList(genreIdList)
         }
     }
 
     console.log(genre)
+    console.log(genreIdList)
     return (
         <div className='py-4 mx-auto flex space-x-8'>
             <div className=''>
@@ -74,12 +78,12 @@ const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag }) => {
                         <span>Any</span>
                         <svg className="w-5 h-5 ml-20 -mr-1" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                     </button>
-                    <div className="opacity-100 dropdown-menu transition-all duration-300 transform origin-top-right scale-95">
+                    <div className="opacity-100 dropdown-menu transition-all duration-300 transform origin-top-right scale-95 z-40">
                         <div className={`${isExpanded ? `block` : `hidden`} absolute right-0 w-40 mt-2 bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none`} aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                         <p className='ml-2 text-gray-500 font-semibold py-2'>Genres</p>
                             <div className="px-4 py-3 space-y-2 overflow-y-auto h-72">
                                 {genres.map((item) => (
-                                    <a className='text-gray-500 font-semibold flex' key={item.anime_id} onClick={() => addGenre(item)}>
+                                    <a className='text-gray-500 font-semibold flex' key={item.anime_id} onClick={() => addGenre(item.anime_id)}>
                                         <span>{item.anime_genre}</span>
                                     </a>
                                 ))}

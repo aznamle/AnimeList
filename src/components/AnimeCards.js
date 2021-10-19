@@ -4,7 +4,7 @@ import CardLoader from './CardLoader'
 import Loader from './Loader'
 import Section from './Section'
 
-const AnimeCards = ({ animeQuery, isFetching, isLoading }) => {
+const AnimeCards = ({ animeQuery, isFetching }) => {
 
     if(isFetching) return <div className='grid grids:cols-2 md:grid-cols-6 gap-2 justify-center'>{
         [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18].map(
