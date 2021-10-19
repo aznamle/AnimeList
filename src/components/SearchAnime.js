@@ -75,6 +75,11 @@ const SearchAnime = () => {
                 <TopAnime />
             </>
             }
+            { animeQuery && animeQuery.length > 0 ? <AnimeCards /> 
+            : 
+                <div className='text-center h-full py-36'>
+                    <h1 className='text-2xl font-semibold text-gray-400 transform duration-200'>No results Found</h1>
+                </div>}
             </div>
         </div>
     )

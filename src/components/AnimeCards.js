@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import CardLoader from './CardLoader'
-import Loader from './Loader'
 import Section from './Section'
 
 const AnimeCards = ({ animeQuery, isFetching }) => {
@@ -12,6 +11,8 @@ const AnimeCards = ({ animeQuery, isFetching }) => {
             )
         } 
     </div>
+
+    console.log(animeQuery)
 
     return (
         <div className='grid grids-cols-2 md:grid-cols-6 justify-center hover:text-blue-500'>
