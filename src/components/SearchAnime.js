@@ -41,9 +41,6 @@ const SearchAnime = () => {
         localStorage.setItem('searchValue', JSON.stringify(searchValue))
     }, [searchValue])
 
-    console.log(searchValue)
-    console.log(genre)
-
     return (
         <div className=''>
             <Filter searchValue={searchValue} clearSearchTag={clearSearchTag} handleSearch={handleSearch} setGenre={setGenre} genre={genre} genreIdList={genreIdList} setGenreIdList={setGenreIdList} />
