@@ -47,13 +47,18 @@ const Filter = ({ handleSearch, genre, setGenre, genreIdList, setGenreIdList }) 
                     Genres
                 </label>
                 <span className="rounded-md shadow-md">
-                    <button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-300 transition duration-300 ease-in-out
+                    <button className="inline-flex justify-center w-full px-3 py-2 text-sm font-medium leading-5 text-gray-300 transition duration-300 ease-in-out
                     bg-white rounded-md hover:text-gray-500 focus:outline-none active:bg-gray-50 active:text-gray-800" 
                         aria-haspopup="true" aria-expanded="true" aria-controls="headlessui-menu-items-117"
                         onClick={() => toggleExpansion(!isExpanded)}
                     >
                         <span>
-                            {(genre.length !==0) ?  <div className='w-7 h-5 rounded-md text-white bg-blue-400 focus:outline-none'>+{genre.length}</div> : <>Any</>}
+                            {(genre.length !==0) ?
+                                <div className='w-7 h-5 rounded-md text-white bg-blue-400 focus:outline-none'>
+                                    +{genre.length}
+                                </div> 
+                                : <div className='mr-1'>Any</div>
+                            }
                         </span>
                         <svg className="w-5 h-5 ml-28 -mr-1" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                     </button>
@@ -63,7 +68,7 @@ const Filter = ({ handleSearch, genre, setGenre, genreIdList, setGenreIdList }) 
                             <div className=" overflow-y-auto h-72">
                                 {genres.map((item) => {
                                 return (
-                                    <div onClick={closeGenreMenu}>
+                                    <div key={item.anime_id} onClick={closeGenreMenu}>
                                         <a className='text-gray-500 font-semibold flex cursor-pointer hover:bg-blue-500 px-4 py-1 hover:text-white transition transform duration-300' 
                                             key={item.anime_id} onClick={() => {addGenre(item.anime_id); addGenreId(item);}}
                                         >

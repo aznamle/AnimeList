@@ -52,9 +52,7 @@ const SearchAnime = () => {
 
     useEffect(() => {
         localStorage.setItem('searchValue', JSON.stringify(searchValue))
-    }, [])
-
-    console.log(searchValue)
+    }, [searchValue, animeQuery])
 
     return (
         <div className=''>
@@ -86,15 +84,15 @@ const SearchAnime = () => {
                 : <></>
             }
             <div className='py-2'>
-            { searchValue || genreIdList.length !== 0  || genreInfo.length !== 0 ? <AnimeCards isLoading={isLoading} isFetching={isFetching} animeQuery={animeQuery} /> : 
+            { searchValue || genre.length !== 0 || genreIdList.length !== 0  || genreInfo.length !== 0 ? <AnimeCards isLoading={isLoading} isFetching={isFetching} animeQuery={animeQuery} /> : 
             <>
                 <Top type='airing' title='TRENDING NOW' />
                 <Top type='upcoming' title='TOP UPCOMING' />
                 <TopAnime />
             </>
             }
-            { animeQuery ? <AnimeCards /> 
-            : 
+            { animeQuery !== '' ? <AnimeCards /> 
+                : 
                 <div className='text-center h-full py-36'>
                     <h1 className='text-2xl font-semibold text-gray-400 transform duration-200'>No results Found</h1>
                 </div>}
