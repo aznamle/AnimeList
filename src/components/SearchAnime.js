@@ -3,7 +3,7 @@ import { useGetSearchAnimeQuery } from '../app/services/animeApi'
 import AnimeCards from './AnimeCards'
 import TopAnime from './Top/TopAnime'
 import Filter from './Filter'
-import TopAiring from './Top/TopAiring'
+import Top from './Top/Top'
 import {
     FaTags
 } from 'react-icons/fa'
@@ -57,7 +57,7 @@ const SearchAnime = () => {
     return (
         <div className=''>
             <Filter searchValue={searchValue} clearSearchTag={clearSearchTag} handleSearch={handleSearch} setGenre={setGenre} genre={genre} genreIdList={genreIdList} setGenreIdList={setGenreIdList} />
-            { searchValue || genreIdList || genre ?  
+            { searchValue || genreIdList.length !== 0 ?  
                 <Section>
                 <div className='py-4 flex space-x-4 items-center'>
                     <FaTags fontSize='20px' className='text-gray-300' />
@@ -86,11 +86,12 @@ const SearchAnime = () => {
             <div className='py-2'>
             { searchValue || genreIdList.length !== 0  || genreInfo.length !== 0 ? <AnimeCards isLoading={isLoading} isFetching={isFetching} animeQuery={animeQuery} /> : 
             <>
-                <TopAiring />
+                <Top type='airing' title='TRENDING NOW' />
+                <Top type='upcoming' title='TOP UPCOMING' />
                 <TopAnime />
             </>
             }
-            { animeQuery && animeQuery.length === 0 ? <AnimeCards /> 
+            { animeQuery ? <AnimeCards /> 
             : 
                 <div className='text-center h-full py-36'>
                     <h1 className='text-2xl font-semibold text-gray-400 transform duration-200'>No results Found</h1>

@@ -1,5 +1,6 @@
 import React, {useState } from 'react'
 import { genres } from '../data/genres'
+import { AiFillCheckCircle } from 'react-icons/ai'
 
 const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag, genreIdList, setGenreIdList }) => {
 
@@ -51,14 +52,17 @@ const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag, genreIdL
                         aria-haspopup="true" aria-expanded="true" aria-controls="headlessui-menu-items-117"
                         onClick={() => toggleExpansion(!isExpanded)}
                     >
-                        <span>Any</span>
+                        <span>
+                            {(genre.length !==0) ?  <div className='w-7 h-5 rounded-md text-white bg-blue-400 focus:outline-none'>+{genre.length}</div> : <>Any</>}
+                        </span>
                         <svg className="w-5 h-5 ml-28 -mr-1" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                     </button>
                     <div className={`${isExpanded ? `block` : `hidden`} opacity-100 dropdown-menu transition-all duration-300 transform origin-top-right scale-95`}>
                         <div className='absolute right-0 w-48 mt-2 bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none' aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                         <p className='ml-2 text-gray-500 font-semibold py-2'>Genres</p>
                             <div className=" overflow-y-auto h-72">
-                                {genres.map((item) => (
+                                {genres.map((item) => {
+                                return (
                                     <div onClick={closeGenreMenu}>
                                         <a className='text-gray-500 font-semibold flex cursor-pointer hover:bg-blue-500 px-4 py-1 hover:text-white transition transform duration-300' 
                                             key={item.anime_id} onClick={() => {addGenre(item.anime_id); addGenreId(item);}}
@@ -66,7 +70,7 @@ const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag, genreIdL
                                             <span>{item.anime_genre}</span>
                                         </a>
                                     </div>
-                                ))}
+                                )})}
                             </div>
                         </div>
                     </div>
