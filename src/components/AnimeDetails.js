@@ -13,10 +13,12 @@ const AnimeDetails = () => {
     
     return (
         <div className=''>
-            
+            <div className='bg-gray-800 mx-auto top-0 overflow-hidden'>
+                <img className='object-cover h-48 md:h-96 w-full filter blur-md' src={animeDetails.image_url} />
+            </div>
             <div className='bg-gray-50'>
-                <div className='mx-auto max-w-screen-2xl px-8 md:px-20 py-12 md:flex space-y-2'>
-                    <div className='shadow-xl w-1/2 md:w-72'>
+                <div className='mx-auto max-w-screen-2xl px-8 md:px-20 py-6 pb-16 md:flex space-y-2'>
+                    <div className='shadow-xl w-1/2 md:w-72 md:-mt-32 z-30'>
                         <img className='object-cover w-full rounded-md' src={animeDetails.image_url} />
                     </div>
                     <div className='md:ml-8 space-y-2 w-full md:w-3/5 md:mt-6'>
