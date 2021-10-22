@@ -11,9 +11,7 @@ const AnimeCards = ({ animeQuery, isFetching }) => {
             )
         } 
     </div>
-
-    console.log(animeQuery)
-
+    
     return (
         <div className='grid grids-cols-2 md:grid-cols-6 justify-center hover:text-blue-500'>
         {animeQuery?.map((show) => (

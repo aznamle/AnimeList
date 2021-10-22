@@ -10,11 +10,8 @@ const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag, genreIdL
         if(genre.includes(item)) {
             return genre
         } else {
-            const timer = setTimeout(() => {
-                const genreList = [...genre, item]
-                setGenre(genreList)
-            }, 1000)
-            return () => clearTimeout(timer)
+            const genreList = [...genre, item]
+            setGenre(genreList)
         }
     }
 
@@ -63,7 +60,9 @@ const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag, genreIdL
                             <div className=" overflow-y-auto h-72">
                                 {genres.map((item) => (
                                     <div onClick={closeGenreMenu}>
-                                        <a className='text-gray-500 font-semibold flex cursor-pointer hover:bg-blue-500 px-4 py-1 hover:text-white transition transform duration-300' key={item.anime_id} onClick={() => {addGenre(item.anime_id); addGenreId(item.anime_genre);}}>
+                                        <a className='text-gray-500 font-semibold flex cursor-pointer hover:bg-blue-500 px-4 py-1 hover:text-white transition transform duration-300' 
+                                            key={item.anime_id} onClick={() => {addGenre(item.anime_id); addGenreId(item);}}
+                                        >
                                             <span>{item.anime_genre}</span>
                                         </a>
                                     </div>
