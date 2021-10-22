@@ -13,13 +13,13 @@ const AnimeCards = ({ animeQuery, isFetching }) => {
     </div>
     
     return (
-        <div className='grid grids-cols-2 md:grid-cols-6 justify-center hover:text-blue-500'>
+        <div className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-0 hover:text-blue-500'>
         {animeQuery && animeQuery?.map((show) => (
             <Section key={show.mal_id}>
-                <div className='py-4 w-48'>
+                <div className='py-4 w-36 md:w-48'>
                     <Link to={`/anime/${show.mal_id}`} className='space-y-2'>
                     <div className=''>
-                        <img src={show.image_url} alt={show.title} className='object-cover h-72 w-full rounded-md shadow-xl' />
+                        <img src={show.image_url} alt={show.title} className='object-cover h-56 md:h-72 w-full rounded-md shadow-xl' />
                     </div>
                     <h1 className='font-semibold text-gray-500 transition transform duration-300 hover:text-blue-500'>{show.title}</h1>
                     </Link>
