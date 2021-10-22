@@ -12,6 +12,7 @@ import Section from './Section'
 const SearchAnime = () => {
     const searchLocalStorage = JSON.parse(localStorage.getItem('searchValue'))
     const genreLocalStorage = JSON.parse(localStorage.getItem('genre'))
+    const genreIdLocalStorage = JSON.parse(localStorage.getItem('genreIdList'))
     const [ searchValue, setSearchValue ] = useState(searchLocalStorage || '')
     const [ genre, setGenre ] = useState('')
     const [ genreIdList, setGenreIdList ] = useState('')
