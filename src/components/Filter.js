@@ -2,7 +2,7 @@ import React, {useState } from 'react'
 import { genres } from '../data/genres'
 import { AiFillCheckCircle } from 'react-icons/ai'
 
-const Filter = ({ searchValue, handleSearch, genre, setGenre, clearTag, genreIdList, setGenreIdList }) => {
+const Filter = ({ handleSearch, genre, setGenre, genreIdList, setGenreIdList }) => {
 
     const [ isExpanded, toggleExpansion ] = useState(false)
     const closeGenreMenu = () => toggleExpansion(false)

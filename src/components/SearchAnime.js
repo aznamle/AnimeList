@@ -12,7 +12,7 @@ import Section from './Section'
 const SearchAnime = () => {
     const searchLocalStorage = JSON.parse(localStorage.getItem('searchValue'))
     const genreLocalStorage = JSON.parse(localStorage.getItem('genre'))
-    const [ searchValue, setSearchValue ] = useState(searchLocalStorage)
+    const [ searchValue, setSearchValue ] = useState(searchLocalStorage || '')
     const [ genre, setGenre ] = useState('')
     const [ genreIdList, setGenreIdList ] = useState('')
     const { data, isLoading, isFetching } = useGetSearchAnimeQuery({searchValue, genre})
@@ -22,7 +22,7 @@ const SearchAnime = () => {
     const genreInfo = gi[0].genre_info
 
     const handleSearch = (e) => {
-        localStorage.setItem('searchValue', JSON.stringify({searchValue}))
+        localStorage.setItem('searchValue', JSON.stringify(searchValue))
         const timer = setTimeout(() => {
         setSearchValue(e.target.value)
         }, 1250)
@@ -52,11 +52,13 @@ const SearchAnime = () => {
 
     useEffect(() => {
         localStorage.setItem('searchValue', JSON.stringify(searchValue))
-    }, [searchValue])
+    }, [])
+
+    console.log(searchValue)
 
     return (
         <div className=''>
-            <Filter searchValue={searchValue} clearSearchTag={clearSearchTag} handleSearch={handleSearch} setGenre={setGenre} genre={genre} genreIdList={genreIdList} setGenreIdList={setGenreIdList} />
+            <Filter handleSearch={handleSearch} setGenre={setGenre} genre={genre} genreIdList={genreIdList} setGenreIdList={setGenreIdList} />
             { searchValue || genreIdList.length !== 0 ?  
                 <Section>
                 <div className='py-4 flex space-x-4 items-center'>
@@ -81,7 +83,7 @@ const SearchAnime = () => {
                     ))}
                 </div>
                 </Section>
-                : null
+                : <></>
             }
             <div className='py-2'>
             { searchValue || genreIdList.length !== 0  || genreInfo.length !== 0 ? <AnimeCards isLoading={isLoading} isFetching={isFetching} animeQuery={animeQuery} /> : 
