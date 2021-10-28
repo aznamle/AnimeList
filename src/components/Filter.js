@@ -26,7 +26,7 @@ const Filter = ({ handleSearch, genre, setGenre, genreIdList, setGenreIdList }) 
     }
 
     return (
-        <div className='py-4 mx-auto flex space-x-8'>
+        <div className='py-4 mx-auto md:flex md:space-x-8'>
             <div className=''>
                 <label className="block text-gray-600 text-md font-semibold py-2">
                     Search
@@ -42,12 +42,13 @@ const Filter = ({ handleSearch, genre, setGenre, genreIdList, setGenreIdList }) 
                     </svg>
                 </div>
             </div>
+
             <div className=''>
                 <label className="block text-gray-600 text-md font-semibold py-2">
                     Genres
                 </label>
                 <span className="rounded-md shadow-md">
-                    <button className="inline-flex justify-center w-full px-3 py-2 text-sm font-medium leading-5 text-gray-300 transition duration-300 ease-in-out
+                    <button className="inline-flex md:justify-center md:w-full px-3 py-2 text-sm font-medium leading-5 text-gray-300 transition duration-300 ease-in-out
                     bg-white rounded-md hover:text-gray-500 focus:outline-none active:bg-gray-50 active:text-gray-800" 
                         aria-haspopup="true" aria-expanded="true" aria-controls="headlessui-menu-items-117"
                         onClick={() => toggleExpansion(!isExpanded)}

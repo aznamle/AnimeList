@@ -2,7 +2,7 @@ import React from 'react'
 
 const AnimeStats = ({ animeDetails }) => {
     return (
-        <div className='bg-white w-64 rounded-md items-center px-4 space-y-2 py-2'>
+        <div className='bg-white w-full md:w-64 rounded-md items-center px-4 space-y-2 py-2'>
             <div>
                 <h1 className='text-sm font-semibold text-gray-500'>Average Score</h1>
                 <p className='text-sm text-gray-400'>{animeDetails.score}</p>
