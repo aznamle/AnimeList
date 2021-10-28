@@ -16,7 +16,6 @@ const AnimeDetails = () => {
 
     const animeDetails = data
 
-    console.log(animeDetails)
     if(isFetching) return <Loader />
     
     return (
@@ -63,8 +62,9 @@ const AnimeDetails = () => {
                     <AnimeStats animeDetails={animeDetails} />
                 </div>
 
-                <div className='py-4 space-y-4 px-4'>
-                </div>
+                <div className='py-4 space-y-4 px-4 w-2/5'>
+                    <iframe className='rounded-md h-3/4 w-full' frameBorder='0' allowFullScreen='allowfullscreen' src={`${animeDetails.trailer_url}/?autoplay=false`} />
+                 </div>
 
                 </div>
                 </Section>

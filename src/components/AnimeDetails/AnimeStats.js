@@ -20,10 +20,6 @@ const AnimeStats = ({ animeDetails }) => {
                 <p className='text-sm text-gray-400'>{animeDetails.duration}</p>
             </div>
             <div>
-                <h1 className='text-sm font-semibold text-gray-500'>Format</h1>
-                <p className='text-sm text-gray-400'>{animeDetails.type}</p>
-            </div>
-            <div>
                 <h1 className='text-sm font-semibold text-gray-500'>Air Date</h1>
                 <p className='text-sm text-gray-400'>{animeDetails.aired.string}</p>
             </div>
