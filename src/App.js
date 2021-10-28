@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom';
 
-import AnimeDetails from './components/AnimeDetails';
+import AnimeDetails from './components/AnimeDetails/AnimeDetails';
 import Navbar from './components/Navbar';
 import Homepage from './components/Homepage';
 import Layout from './components/Layout';
