@@ -43,7 +43,7 @@ const AnimeDetails = () => {
                 </Section>
 
                 <Section>
-                <div className='mx-auto max-w-screen-xl space-x-8 flex'>
+                <div className='mx-auto w-full md:max-w-screen-xl px-6 md:px-0 space-x-8 md:flex'>
                     <div className='py-4 space-y-4'>
                         <div className='bg-white w-64 rounded-md flex items-center px-2 space-x-4'>
                             <div className='py-2'>
@@ -62,7 +62,7 @@ const AnimeDetails = () => {
                         <AnimeStats animeDetails={animeDetails} />
                     </div>
 
-                    <div className='py-4 space-y-2 w-2/5'>
+                    <div className='py-4 space-y-2 w-5/6 md:w-2/5'>
                         <h1 className='text-md font-semibold text-gray-500'>Trailer</h1>
                         <iframe className='rounded-md h-3/4 w-full' frameBorder='0' allowFullScreen='allowfullscreen' title='video' src={`${animeDetails.trailer_url}/?autoplay=false`} />
                     </div>
