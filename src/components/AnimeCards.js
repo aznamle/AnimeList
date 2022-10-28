@@ -19,9 +19,9 @@ const AnimeCards = ({ animeQuery, isFetching }) => {
                 <div className='py-4 w-40 md:w-48'>
                     <Link to={`/anime/${show.mal_id}`} className='space-y-2'>
                     <div className=''>
-                        <img src={show.image_url} alt={show.title} className='object-cover h-72 md:h-72 w-full rounded-md shadow-xl' />
+                        <img src={show.images?.webp.large_image_url} className='object-cover h-72 md:h-72 w-full rounded-md shadow-xl' />
                     </div>
-                    <h1 className='font-semibold text-gray-500 transition transform duration-300 hover:text-blue-500'>{show.title}</h1>
+                    <h1 className='font-semibold text-gray-500 truncate transition transform duration-300 hover:text-blue-500'>{show.title}</h1>
                     </Link>
                 </div>
             </Section>

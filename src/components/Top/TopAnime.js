@@ -7,7 +7,7 @@ import CardLoader from '../CardLoader'
 const TopAnime = () => {
     
     const { data, isFetching } = useGetTopAnimeQuery()
-    const top = data?.top.filter(item => item.rank <= 6)
+    const top = data?.data.filter(item => item.rank <= 6)
 
     if(isFetching) return <>
         <div className="h-4 bg-gray-300 rounded w-1/4"></div>

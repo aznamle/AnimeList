@@ -7,7 +7,7 @@ const TopFilms = () => {
     
     const type = 'upcoming'
     const { data, isFetching } = useGetTopQuery(type)
-    const top = data?.top.filter(item => item.rank <= 6)
+    const top = data?.data
 
     if(isFetching) return <>
         <div className="h-4 bg-gray-300 rounded w-1/4"></div>
