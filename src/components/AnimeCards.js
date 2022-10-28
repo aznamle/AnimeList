@@ -14,8 +14,8 @@ const AnimeCards = ({ animeQuery, isFetching }) => {
     
     return (
         <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2 md:gap-0 hover:text-blue-500'>
-        {animeQuery && animeQuery?.map((show) => (
-            <Section key={show.mal_id} className=''>
+        {animeQuery && animeQuery?.map((show, i) => (
+            <Section key={show.mal_id}>
                 <div className='py-4 w-40 md:w-48'>
                     <Link to={`/anime/${show.mal_id}`} className='space-y-2'>
                     <div className=''>

@@ -17,7 +17,7 @@ const SearchAnime = () => {
     const [ genre, setGenre ] = useState('')
     const [ genreIdList, setGenreIdList ] = useState('')
     const { data, isLoading, isFetching } = useGetSearchAnimeQuery({searchValue, genre})
-    const animeQuery = data?.results
+    const animeQuery = data?.data
     
     const gi = [{genre_info: genre && genreIdList}]
     const genreInfo = gi[0].genre_info
